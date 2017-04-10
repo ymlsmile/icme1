@@ -3,19 +3,19 @@
 __author__='yml'
 
 def writelist(filename,list):
-    f = file(filename + '.txt', 'w+')
-    for data in list:
-        k = ' '.join([str(j) for j in data])
-        f.write(k + "\n")
-    f.close()
+    with file(filename + '.txt', 'w+') as f:
+        for data in list:
+            k = ' '.join([str(j) for j in data])
+            f.write(k + "\n")
+
 
 def readlist(filename):
-    file = open(filename)
-    data=[]
-    line = file.readline()
-    while line:
-        data.append([float(x) for x in line.split()])
-        line=file.readline()
+    with open(filename) as file:
+        data = []
+        line = file.readline()
+        while line:
+            data.append([float(x) for x in line.split()])
+            line = file.readline()
     return data
 
 def str2float(list):
